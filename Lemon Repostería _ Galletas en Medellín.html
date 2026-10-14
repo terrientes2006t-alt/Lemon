@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lemon Repostería | Galletas en Medellín</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --surface:#ffffff; --soft:#f7fcf9; --text:#1f3a33; --muted:#4f6b62;
+  --green:#6E9989; --mint:#78F0A8; --yellow:#FFEC00; --line:#e0eee6; --on-yellow:#1f3a33;
+  --head:"Fredoka","Quicksand",system-ui,sans-serif; --body:"Quicksand",system-ui,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#13201c; --surface:#1b2d27; --soft:#182923; --text:#eaf6ef; --muted:#a9c4b8; --line:#2f4a40;
+}}
+:root[data-theme="dark"]{--bg:#13201c; --surface:#1b2d27; --soft:#182923; --text:#eaf6ef; --muted:#a9c4b8; --line:#2f4a40}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:1.0625rem;line-height:1.6;font-weight:500}
+h1,h2,h3{font-family:var(--head);font-weight:600;line-height:1.15;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:56px 0}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;gap:14px;min-height:60px}
+.logo-slot{width:44px;height:44px;border:2px dashed var(--green);border-radius:50%;display:grid;place-items:center;font-size:.65rem;color:var(--muted);flex:none;overflow:hidden}
+.logo-slot img{width:100%;height:100%;object-fit:contain}
+.brand{font-family:var(--head);font-weight:600;font-size:1.15rem;text-decoration:none}
+nav ul{display:flex;gap:6px;list-style:none;margin:0 0 0 auto;padding:0;overflow-x:auto}
+nav ul a{display:block;padding:8px 12px;border-radius:999px;text-decoration:none;font-weight:700;font-size:.95rem;white-space:nowrap}
+nav ul a:hover{background:var(--soft)}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;background:var(--yellow);color:var(--on-yellow);font-weight:700;text-decoration:none;border:2px solid var(--on-yellow);font-family:var(--body);font-size:1rem;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.small{min-height:40px;padding:0 16px;font-size:.92rem}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--green)}
+.hero{display:grid;gap:36px;align-items:center;padding:48px 0 40px}
+.hero h1{font-size:clamp(2.2rem,7vw,3.6rem)}
+.hero p{color:var(--muted);max-width:46ch;margin:16px 0 24px}
+.hero-img{aspect-ratio:1;max-width:380px;width:100%;margin:0 auto;border-radius:48% 52% 45% 55%/55% 45% 55% 45%;background:var(--mint);display:grid;place-items:center;text-align:center;border:3px dashed var(--on-yellow);color:var(--on-yellow);padding:20px;overflow:hidden}
+.hero-img img,.ph img{width:100%;height:100%;object-fit:cover}
+@media(min-width:760px){.hero{grid-template-columns:1.1fr .9fr}}
+.head{margin-bottom:28px}
+.head h2{font-size:clamp(1.7rem,5vw,2.4rem)}
+.head p{color:var(--muted);margin:8px 0 0;max-width:54ch}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:24px;padding:12px;display:flex;flex-direction:column}
+.ph{aspect-ratio:4/3;border-radius:16px;background:var(--soft);border:2px dashed var(--green);display:grid;place-items:center;text-align:center;font-size:.9rem;color:var(--muted);overflow:hidden}
+.card .body{padding:14px 6px 6px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:1.2rem}
+.card p{margin:0;color:var(--muted);font-size:.97rem;flex:1}
+.price{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}
+.price b{font-family:var(--head);font-size:1.3rem}
+.tint{background:var(--soft);border-block:1px solid var(--line)}
+.combo{border-color:var(--green)}
+.empty{border-style:dashed;background:transparent;align-items:center;justify-content:center;text-align:center;min-height:180px;color:var(--muted);padding:20px}
+.how{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.how div{background:var(--surface);border:2px solid var(--line);border-radius:24px;padding:20px}
+.how h3{font-size:1.1rem;margin-bottom:6px}
+.how p{margin:0;color:var(--muted)}
+.about{display:grid;gap:28px;align-items:center}
+.about p{max-width:60ch;color:var(--muted);margin:12px 0 0}
+@media(min-width:760px){.about{grid-template-columns:.8fr 1.2fr}}
+footer{background:var(--soft);color:var(--text);border-top:4px solid var(--mint);padding:40px 0 calc(40px + 70px)}
+footer h2{font-size:1.5rem}
+.socials{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 20px}
+footer .btn{background:var(--yellow)}
+footer small{display:block;opacity:.85}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;box-shadow:0 6px 18px rgba(0,0,0,.22)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav aria-label="Principal">
+  <!-- LOGO: pon la ruta de tu logo en LOGO_SRC (abajo, en CONFIG) -->
+  <div class="logo-slot" id="logoSlot">Logo</div>
+  <a class="brand" href="#inicio">Lemon</a>
+  <ul>
+    <li><a href="#clasicas">Clásicas</a></li>
+    <li><a href="#especiales">Especiales</a></li>
+    <li><a href="#combos">Combos</a></li>
+    <li><a href="#pedir">Cómo pedir</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+  </ul>
+</nav></div></header>
+
+<main id="inicio">
+<div class="wrap hero">
+  <div>
+    <h1>Galletas que endulzan tu día</h1>
+    <p>Galletas frescas, tiernas y llenas de cariño. Mira el catálogo, elige las que más te gusten y pídelas por WhatsApp. Entregamos en Medellín.</p>
+    <a class="btn" data-wa="Hola Lemon 🍋 Quiero pedir galletas" href="#">Pedir por WhatsApp</a>
+    <a class="btn ghost" href="#clasicas">Ver catálogo</a>
+  </div>
+  <div class="hero-img" id="heroImg">Foto principal<br>(tu mejor galleta)</div>
+</div>
+
+<section id="clasicas" class="tint"><div class="wrap">
+  <div class="head"><h2>Galletas clásicas</h2><p>Nuestros sabores de siempre.</p></div>
+  <div class="grid" id="gClasicas"></div>
+</div></section>
+
+<section id="especiales"><div class="wrap">
+  <div class="head"><h2>Ediciones especiales</h2><p>Sabores de temporada, por tiempo limitado.</p></div>
+  <div class="grid" id="gEspeciales"></div>
+</div></section>
+
+<section id="combos" class="tint"><div class="wrap">
+  <div class="head"><h2>Combos</h2><p>Para compartir (o no).</p></div>
+  <div class="grid" id="gCombos"></div>
+</div></section>
+
+<section id="pedir"><div class="wrap">
+  <div class="head"><h2>Cómo pedir</h2><p>Todo el proceso es por WhatsApp.</p></div>
+  <div class="how">
+    <div><h3>Elige tus galletas</h3><p>Mira el catálogo y toca “Pedir” en la que quieras.</p></div>
+    <div><h3>Escríbenos</h3><p>Se abre WhatsApp con el mensaje listo. Solo envíalo y confirmamos tu pedido.</p></div>
+    <div><h3>Recíbelas en Medellín</h3><p>Hacemos entregas únicamente en Medellín. Acordamos los detalles por el chat.</p></div>
+  </div>
+</div></section>
+
+<section id="nosotros" class="tint"><div class="wrap about">
+  <div class="ph" id="aboutImg" style="max-width:380px;width:100%">Foto del equipo<br>o de la cocina</div>
+  <div>
+    <h2 style="font-size:clamp(1.7rem,5vw,2.4rem)">Quiénes somos</h2>
+    <p>Somos Lemon Repostería, un emprendimiento de Medellín que nació para endulzar momentos con cariño y frescura.</p>
+    <p>Nuestro símbolo es una rodaja de limón con corazones en el centro, y así queremos que se sienta cada galleta: tierna, cercana y hecha para compartir.</p>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <h2>Síguenos</h2>
+  <div class="socials" id="socials"></div>
+  <small>Lemon Repostería · Medellín, Colombia</small>
+</div></footer>
+
+<a class="btn fab" data-wa="Hola Lemon 🍋 Quiero pedir galletas" href="#">WhatsApp</a>
+
+<script>
+/* ============ EDITA AQUÍ ============ */
+const CONFIG = {
+  phone: "57XXXXXXXXXX",          // tu número con indicativo, sin + ni espacios. Ej: 573001234567
+  defaultMsg: "Hola Lemon 🍋 Quiero pedir galletas",
+  LOGO_SRC: "",                    // ruta/URL del logo. Vacío = muestra el espacio
+  HERO_IMG: "",                    // foto principal
+  ABOUT_IMG: "",                   // foto de “Quiénes somos”
+  socials: [                       // pon tu enlace en href
+    {name:"Instagram", href:"#"},
+    {name:"TikTok",    href:"#"},
+    {name:"Facebook",  href:"#"}
+  ]
+};
+/* img: ruta/URL de la foto (vacío = espacio para foto) */
+const CLASICAS = [
+  {name:"Chips clásica", desc:"Masa suave con chips de chocolate. La que nunca falla.", price:6000, img:""},
+  {name:"Nutella",       desc:"Rellena de Nutella cremosa en cada mordida.", price:7500, img:""},
+  {name:"Maní",          desc:"Dulce, crocante y con sabor a maní tostado.", price:7500, img:""},
+  {name:"Oreo",          desc:"Con trocitos de galleta Oreo y un toque cremoso.", price:7500, img:""},
+  {name:"Chocobrownie",  desc:"Intensa, húmeda y muy chocolatosa.", price:7500, img:""},
+  {name:"Quipito",       desc:"Dulce, suave y con el sabor del quipito.", price:7500, img:""},
+  {name:"Limonada de coco", desc:"Fresca y cítrica, con un toque tropical de coco.", price:7500, img:""},
+  {name:"Red velvet",    desc:"Suave, rojiza y con sabor a vainilla y cacao.", price:7500, img:""},
+  {name:"Pistacho",      desc:"Cremosa, con sabor intenso a pistacho.", price:7500, img:""}
+];
+const ESPECIALES = [
+  {name:"Edición Halloween 🎃", desc:"Pronto: cambia este texto, el precio y la foto.", price:7500, img:""}
+];
+const COMBOS = [
+  {name:"Caja x4", desc:"Elige 4 galletas de tus sabores favoritos.", price:30000, img:""},
+  null, null   /* cada null es un espacio libre para un combo nuevo */
+];
+/* ============ FIN DE LO EDITABLE ============ */
+
+const cop = n => "$" + n.toLocaleString("es-CO");
+const wa = msg => `https://wa.me/${CONFIG.phone}?text=${encodeURIComponent(msg)}`;
+const photo = (src, alt) => src ? `<img src="${src}" alt="${alt}" loading="lazy">` : "Tu foto aquí";
+
+function card(p, isCombo){
+  if(!p) return `<div class="card empty combo">Espacio para un nuevo combo</div>`;
+  const msg = isCombo ? `Hola Lemon 🍋 Quiero pedir el combo: ${p.name}` : `Hola Lemon 🍋 Quiero pedir galletas ${p.name}`;
+  return `<article class="card ${isCombo?"combo":""}">
+    <div class="ph">${photo(p.img,p.name)}</div>
+    <div class="body"><h3>${p.name}</h3><p>${p.desc}</p>
+    <div class="price"><b>${cop(p.price)}</b><a class="btn small" href="${wa(msg)}" target="_blank" rel="noopener">Pedir</a></div></div></article>`;
+}
+gClasicas.innerHTML = CLASICAS.map(p=>card(p)).join("");
+gEspeciales.innerHTML = ESPECIALES.map(p=>card(p)).join("");
+gCombos.innerHTML = COMBOS.map(p=>card(p,true)).join("");
+socials.innerHTML = CONFIG.socials.map(s=>`<a class="btn small" href="${s.href}" target="_blank" rel="noopener">${s.name}</a>`).join("");
+document.querySelectorAll("[data-wa]").forEach(a=>{a.href=wa(a.dataset.wa||CONFIG.defaultMsg);a.target="_blank";a.rel="noopener"});
+if(CONFIG.LOGO_SRC) logoSlot.innerHTML=`<img src="${CONFIG.LOGO_SRC}" alt="Lemon Repostería">`;
+if(CONFIG.HERO_IMG) heroImg.innerHTML=`<img src="${CONFIG.HERO_IMG}" alt="Galletas Lemon">`;
+if(CONFIG.ABOUT_IMG) aboutImg.innerHTML=`<img src="${CONFIG.ABOUT_IMG}" alt="Lemon Repostería">`;
+</script>
+</body>
+</html>
